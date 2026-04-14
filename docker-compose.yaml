@@ -1,0 +1,10 @@
+name: apricity-post-svc
+
+services:
+  MongoDB:
+    container_name: post-svc-db
+    image: mongodb/mongodb-community-server:8.0-ubuntu2204-slim
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo_data:/data/db
