@@ -1,4 +1,4 @@
-package com.haze.post_svc;
+package com.apricity.post_svc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
