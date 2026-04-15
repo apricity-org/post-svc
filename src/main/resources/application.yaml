@@ -11,3 +11,8 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8080/realms/haze-org
+
+cloudinary:
+  cloud-name: ${ccloudname}
+  api-key: ${capikey}
+  api-secret: ${capisecret}

@@ -1,24 +1,22 @@
-package com.apricity.post_svc.cloudinary;
+package com.apricity.post_svc.service;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
-@Component
 @Slf4j
+@Component
+@RequiredArgsConstructor
 public class FileUploadService {
 
-    public String uploadFile(MultipartFile multipartFile) {
+    private final Cloudinary cloudinary;
 
-        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", System.getenv("ccloudname"),
-                "api_key", System.getenv("capikey"),
-                "api_secret", System.getenv("capisecret"),
-                "secure", true));
+    public String uploadFile(MultipartFile multipartFile) {
 
         try {
             Map<String, String> uploadResponse = cloudinary.uploader().upload(
