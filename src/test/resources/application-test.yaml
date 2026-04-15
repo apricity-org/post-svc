@@ -1,0 +1,9 @@
+cloudinary:
+  cloud-name: cloud-name
+  api-key: api-key
+  api-secret: api-secret
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test

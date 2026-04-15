@@ -10,6 +10,8 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/posts")
@@ -24,5 +26,15 @@ public class PostController {
                                      @AuthenticationPrincipal Jwt jwt) {
         String username = jwt.getClaimAsString("preferred_username");
         return new ResponseEntity<>(postService.uploadPost(multipartFile,username, description), HttpStatus.CREATED) ;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Post> getPostById(@PathVariable("id") String id){
+        return new ResponseEntity<>(postService.getPostById(id), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Post>> getAllPostsForUser(@RequestParam("username") String username){
+        return new ResponseEntity<>(postService.getAllPostsForUser(username), HttpStatus.OK);
     }
 }
